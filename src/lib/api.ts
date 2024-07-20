@@ -145,3 +145,16 @@ export const getSearchVideos = async (videoId: string) => {
   }
 };
 
+// get videos comments
+export const getVideosComments = async (videoId: string) => {
+  try {
+    const data = await fetch(COMMENTS_API + videoId);
+    if (!data.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const res = await data.json();
+    return res?.items || [];
+  } catch (error) {
+    return toast.error("Something went wrong, couldn't fetch videos");
+  }
+};

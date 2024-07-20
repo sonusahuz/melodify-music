@@ -1,7 +1,7 @@
 'use client';
 import Spinner from '@/components/custom/Loading';
 import { Button } from '@/components/ui/button';
-import { COMMENTS_API, getSingleVideo } from '@/lib/api';
+import { getSingleVideo, getVideosComments } from '@/lib/api';
 import { useQuery } from '@tanstack/react-query';
 import moment from 'moment';
 import React from 'react';
@@ -10,7 +10,6 @@ import { formatNumber } from '@/lib/utils';
 
 const SingleVideo = ({ params }: { params: { videoId: string } }) => {
   const [isSubscribed, setIsSubscribed] = React.useState(false);
-  const [showComments, setShowComments] = React.useState(false);
 
   // fetch single videos
   const { data, isLoading: videoLoading } = useQuery({
@@ -21,11 +20,7 @@ const SingleVideo = ({ params }: { params: { videoId: string } }) => {
   // fetch comments
   const { data: commentData, isLoading: commentLoading } = useQuery({
     queryKey: ['comments', params.videoId],
-    queryFn: async () => {
-      const res = await fetch(COMMENTS_API + params?.videoId);
-      const json = await res.json();
-      return json.items;
-    },
+    queryFn: async () => getVideosComments(params.videoId),
   });
 
   if (videoLoading || commentLoading) return <Spinner />;
