@@ -11,7 +11,7 @@ import { ThemeProvider } from '@/components/custom/theme-provider';
 
 const inter = Poppins({
   subsets: ['latin'],
-  weight: ['100', '200', '400', '500'],
+  weight: ['100', '200', '400'],
 });
 
 export const metadata: Metadata = {
