@@ -24,11 +24,9 @@ const SearchSongs = () => {
     handleDownloadSong,
   } = useMusicPlayer();
 
-  if (searchLoading) return <Spinner />;
-
+  if (searchLoading || isLoading) return <Spinner />;
   if (searchError) return <div>Something went wrong</div>;
 
-  if (isLoading) return <Spinner />;
   return (
     <div className="mb-36">
       {!searchResults?.songs.results?.length ? (

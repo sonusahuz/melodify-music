@@ -50,7 +50,7 @@ const Albums = ({ params }: { params: { albumId: string } }) => {
             <p className="mb-3 leading-relaxed dark:text-gray-400">
               {album?.description}
             </p>
-            <div className="mb-3 dark:text-gray-400">
+            <div className="mb-3 dark:text-gray-400 hidden lg:block">
               {album?.artists?.all
                 ?.map((artist: any) => artist.name)
                 .join(', ')}
