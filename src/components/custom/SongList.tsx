@@ -24,7 +24,7 @@ const SongList = ({ song }: { song: Song }) => {
             onClick={() => getSong(song.id)}
           >
             <h1
-              className="truncate text-sm font-medium"
+              className="truncate text-sm font-semibold"
               dangerouslySetInnerHTML={{
                 __html: `${song?.name || song?.title}`,
               }}

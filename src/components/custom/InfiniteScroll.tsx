@@ -62,7 +62,7 @@ const InfiniteHorizontalScroll = ({ query = 'hindi' }: { query: string }) => {
             width={150}
           />
           <h3
-            className="truncate pt-2 text-sm"
+            className="truncate pt-2 text-sm "
             dangerouslySetInnerHTML={{
               __html: `${song?.name || song?.title}`,
             }}

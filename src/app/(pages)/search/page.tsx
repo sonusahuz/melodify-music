@@ -87,7 +87,7 @@ const SearchSongs = () => {
                             />
                             <div className="lg:w-96 w-60 truncate">
                               <h1
-                                className="truncate text-sm font-medium"
+                                className="truncate text-sm font-semibold"
                                 dangerouslySetInnerHTML={{
                                   __html: `${item?.name || item?.title}`,
                                 }}
