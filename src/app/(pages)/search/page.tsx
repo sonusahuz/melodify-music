@@ -46,7 +46,7 @@ const SearchSongs = () => {
             ))}
           </div>
           <div className="mx-auto">
-            <h1 className="text-2xl font-bold mt-6 mb-2">Trending Songs</h1>
+            <h1 className="text-2xl font-bold mt-6 mb-2">New Releases</h1>
             <div className="flex justify-center items-center scroll-container gap-4">
               {songs?.trending?.albums?.map((song) => (
                 <AlbumCard key={song.id} song={song} />
