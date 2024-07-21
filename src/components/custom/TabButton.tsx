@@ -1,5 +1,5 @@
 'use client';
-import { Compass, House, Library, LogIn, Search, TvMinimalPlay } from 'lucide-react';
+import { House, Library, LogIn, TvMinimalPlay } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 import { ModeToggle } from './DarkModeButton';
@@ -21,15 +21,6 @@ const TabButton = () => {
         <Link href={'/'}>
           <House strokeWidth={1.25} size={23} className="text-center mx-auto" />
           <span className="text-xs">Home</span>
-        </Link>
-
-        <Link href={'/explore'}>
-          <Compass
-            strokeWidth={1.25}
-            size={23}
-            className="text-center mx-auto"
-          />
-          <span className="text-xs">Explore</span>
         </Link>
 
         <Link href={'/watch'}>

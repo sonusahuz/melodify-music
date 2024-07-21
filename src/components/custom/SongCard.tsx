@@ -21,12 +21,12 @@ const SongCard = ({
       <div className="mx-auto">
         {path.startsWith('/genre') ? (
           <div>
-            <h1 className="text-2xl font-bold mb-2 mt-6">New Releases</h1>
+            <h1 className="text-2xl font-bold mb-2 mt-6">Trending Now</h1>
             <InfiniteHorizontalScroll query={query} />
           </div>
         ) : (
-          <div className="hidden md:block">
-            <h1 className="text-2xl font-bold mb-2 mt-6">New Releases</h1>
+          <div className="">
+            <h1 className="text-2xl font-bold mb-2 mt-6">Trending Now</h1>
             <InfiniteHorizontalScroll query="hindi" />
           </div>
         )}
@@ -69,7 +69,7 @@ const SongCard = ({
             <InfiniteHorizontalScroll query="" />
           </div>
         ) : (
-          <div className="hidden md:block">
+          <div className="">
             <h1 className="text-2xl font-bold mb-2 mt-6">Bhakti - Hindi</h1>
             <InfiniteHorizontalScroll query="bhakti hindi" />
           </div>
@@ -82,19 +82,11 @@ const SongCard = ({
             <InfiniteHorizontalScroll query={query} />
           </div>
         ) : (
-          <div className="hidden md:block">
+          <div className="">
             <h1 className="text-2xl font-bold mb-2 mt-6">Explore Lofi Songs</h1>
             <InfiniteHorizontalScroll query="lofi songs" />
           </div>
         )}
-      </div>
-      <div className="mx-auto">
-        <h1 className=" text-2xl font-bold mb-2 mt-6">Trending Now</h1>
-        <div className="flex justify-center items-center scroll-container gap-4">
-          {songs?.trending?.albums?.map((song) => (
-            <AlbumCard key={song.id} song={song} />
-          ))}
-        </div>
       </div>
       <div className="mx-auto">
         {path.startsWith('/genre') ? (
@@ -105,7 +97,7 @@ const SongCard = ({
             <InfiniteHorizontalScroll query="english" />
           </div>
         ) : (
-          <div className="hidden md:block">
+          <div className="">
             <h1 className="text-2xl font-bold mb-2 mt-6">
               International Top Hits
             </h1>
@@ -120,7 +112,7 @@ const SongCard = ({
             <InfiniteHorizontalScroll query="party songs" />
           </div>
         ) : (
-          <div className="hidden md:block">
+          <div className="">
             <h1 className="text-2xl font-bold mb-2 mt-6">Top Party Hits</h1>
             <InfiniteHorizontalScroll query="party songs" />
           </div>
