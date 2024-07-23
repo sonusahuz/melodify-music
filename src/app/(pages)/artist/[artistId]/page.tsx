@@ -40,15 +40,15 @@ const ArtistPage = ({ params }: { params: { artistId: string } }) => {
               {artists?.name}
             </h1>
             <div className="flex items-center justify-between gap-3 pt-1 lg:pt-4 dark:text-gray-400">
-              <small className="mb-5 leading-relaxed font-medium capitalize">
-                {artists?.type} ·
-              </small>
-              <small className="mb-5 leading-relaxed font-medium">
-                {formatNumber(Number(artists?.followerCount))} Listeners ·
-              </small>
-              <small className="mb-5 leading-relaxed font-medium">
-                {formatNumber( Number(artists?.fanCount))} Followers
-              </small>
+              <li className="mb-5 leading-relaxed font-medium capitalize list-none text-xs">
+                {artists?.type}
+              </li>
+              <li className="mb-5 leading-relaxed font-medium text-xs">
+                {formatNumber(Number(artists?.followerCount))} Listeners
+              </li>
+              <li className="mb-5 leading-relaxed font-medium text-xs">
+                {formatNumber(Number(artists?.fanCount))} Followers
+              </li>
             </div>
             <div>
               {artists && (
@@ -68,7 +68,7 @@ const ArtistPage = ({ params }: { params: { artistId: string } }) => {
       </section>
       <section>
         <div>
-          <h1 className="text-2xl font-bold py-2 m-2">Popular Songs</h1>
+          <h1 className="text-2xl font-bold py-2 ">Popular Songs</h1>
           <div>
             {artists?.topSongs?.map((song: any) => (
               <SongList key={song.id} song={song} />

@@ -66,7 +66,7 @@ const Playlists = ({ params }: { params: { playlistId: string } }) => {
             <div className="mb-3 dark:text-gray-400 hidden lg:block">
               {playlist?.artists?.map((artist: any) => artist?.name).join(', ')}
             </div>
-            <p className="mb-3 leading-relaxed">
+            <p className="mb-3 leading-relaxed dark:text-gray-400 ">
               {playlist?.songs?.length} Songs
             </p>
             <div>
