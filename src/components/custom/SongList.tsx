@@ -7,7 +7,7 @@ const SongList = ({ song }: { song: Song }) => {
   return (
     <div
       key={song.id}
-      className="border p-2 shadow-md rounded w-full cursor-pointer my-2"
+      className="border p-2 shadow-md rounded w-full cursor-pointer"
     >
       <div className="flex items-center gap-2 justify-between flex-wrap">
         <div className="flex items-center justify-between gap-3 sm:w-auto w-60 lg:w-96 truncate">

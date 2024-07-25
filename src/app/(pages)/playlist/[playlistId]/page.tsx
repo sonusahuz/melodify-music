@@ -89,7 +89,7 @@ const Playlists = ({ params }: { params: { playlistId: string } }) => {
       </section>
       <section>
         <h1 className=" text-2xl font-bold mb-2">Songs</h1>
-        <div className="mx-auto flex items-start flex-col w-full">
+        <div className="mx-auto flex items-start flex-col w-full gap-3">
           {playlist?.songs?.map((song: any) => (
             <SongList key={song.id} song={song} />
           ))}

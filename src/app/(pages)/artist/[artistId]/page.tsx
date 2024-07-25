@@ -69,7 +69,7 @@ const ArtistPage = ({ params }: { params: { artistId: string } }) => {
       <section>
         <div>
           <h1 className="text-2xl font-bold py-2 ">Popular Songs</h1>
-          <div>
+          <div className="mx-auto flex items-start flex-col w-full gap-3">
             {artists?.topSongs?.map((song: any) => (
               <SongList key={song.id} song={song} />
             ))}
