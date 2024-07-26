@@ -69,47 +69,7 @@ const SearchSongs = () => {
                       <h1 className="text-2xl font-bold mb-2 mt-6">
                         Top Result
                       </h1>
-                      <div
-                        onClick={() => getSong(item.id)}
-                        key={item.id}
-                        className="pt-2 rounded-lg w-full cursor-pointer my-2 border p-2 shadow-md"
-                      >
-                        <div className="flex items-center gap-2 justify-between flex-wrap">
-                          <div className="flex items-center justify-between gap-3 sm:w-auto w-60 truncate">
-                            <img
-                              src={`${
-                                item?.image[2]?.url || item?.image[2]?.link
-                              }`}
-                              alt={item.title}
-                              width={50}
-                              height={50}
-                              className="rounded"
-                            />
-                            <div className="lg:w-96 w-60 truncate">
-                              <h1
-                                className="truncate text-sm font-semibold"
-                                dangerouslySetInnerHTML={{
-                                  __html: `${item?.name || item?.title}`,
-                                }}
-                              ></h1>
-                              <small className="text-xs">
-                                {item?.primaryArtists}
-                              </small>
-                            </div>
-                          </div>
-                          <div className="flex items-center justify-between gap-4">
-                            <AddFavorite song={item} />
-                            <ArrowDownToLine
-                              size={25}
-                              className="cursor-pointer"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleDownloadSong(item);
-                              }}
-                            />
-                          </div>
-                        </div>
-                      </div>
+                      <SongList song={item} />
                     </div>
                   )}
                 </div>
@@ -203,9 +163,11 @@ const SearchSongs = () => {
 
             <div>
               <h1 className="text-2xl font-bold mb-2 mt-6">Songs</h1>
-              {searchResults?.songs?.results?.map((item: any) => (
-                <SongList key={item.id} song={item} />
-              ))}
+              <div className="flex items-center flex-col gap-3">
+                {searchResults?.songs?.results?.map((item: any) => (
+                  <SongList key={item.id} song={item} />
+                ))}
+              </div>
             </div>
             <div>
               <h1 className="text-2xl font-bold mb-2 mt-6">Albums</h1>
@@ -223,6 +185,9 @@ const SearchSongs = () => {
               <div
                 className={`lg:flex md:justify-start md:items-center md:gap-4 md:flex-wrap ${'scroll-container gap-4'}`}
               >
+                {searchResults?.playlists?.results?.length === 0 && (
+                  <p>No playlists found</p>
+                )}
                 {searchResults?.playlists?.results?.map((item: any) => (
                   <PlaylistCard key={item.id} song={item} />
                 ))}

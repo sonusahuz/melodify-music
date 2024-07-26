@@ -83,13 +83,15 @@ const SongQueue = ({ params }: { params: { songId: string } }) => {
           </div>
         </div>
         <div className="mb-40 order-2 lg:order-1 lg:mr-5 lg:mt-0 mt-6 w-full">
-          <div className='flex items-center justify-between flex-wrap'>
+          <div className="flex items-center justify-between flex-wrap">
             <h1 className="text-3xl font-bold">Queue</h1>
             <small>{filteredSongQueue.length} Songs</small>
           </div>
-          {filteredSongQueue.map((song) => (
-            <SongList key={song.id} song={song} />
-          ))}
+          <div className="flex items-center flex-col gap-3 mt-2">
+            {filteredSongQueue.map((song) => (
+              <SongList key={song.id} song={song} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
