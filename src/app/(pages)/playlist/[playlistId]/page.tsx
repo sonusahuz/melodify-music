@@ -1,0 +1,97 @@
+'use client';
+import SongList from '@/components/custom/SongList';
+import { getPlaylistDetail } from '@/lib/api';
+import { useQuery } from '@tanstack/react-query';
+import React from 'react';
+import Spinner from '@/components/custom/Loading';
+import { ShareButton } from '@/components/button/ShareButton';
+import ArtistData from '@/components/custom/ArtistData';
+
+interface Artist {
+  id: string;
+  name: string;
+  role: string;
+  image: Image[];
+  type: string;
+  url: string;
+}
+
+const removeDuplicateArtists = (artists: Artist[]): Artist[] => {
+  const seen = new Set<string>();
+  return artists.filter((artist) => {
+    if (seen.has(artist.id)) {
+      return false;
+    } else {
+      seen.add(artist.id);
+      return true;
+    }
+  });
+};
+
+const Playlists = ({ params }: { params: { playlistId: string } }) => {
+  const { playlistId } = params;
+
+  const { data: playlist, isLoading } = useQuery({
+    queryKey: ['playlists', playlistId],
+    queryFn: () => getPlaylistDetail(playlistId),
+  });
+
+  const uniqueArtists = removeDuplicateArtists(playlist?.artists || []);
+
+  if (isLoading) return <Spinner />;
+
+  return (
+    <div className="mb-20">
+      <section className="flex items-center justify-center text-gray-600 body-font">
+        <div className="flex flex-col items-center justify-center py-5 mx-auto md:flex-row">
+          <div className="w-64 mb-6 md:mb-0">
+            <img
+              height={200}
+              width={200}
+              className="object-cover rounded object-center w-[450px]"
+              alt={`${playlist?.name || playlist?.title}`}
+              src={playlist?.image[2]?.link || playlist?.image[2]?.url}
+            />
+          </div>
+          <div className="flex flex-col items-center text-center lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 md:items-start md:text-left">
+            <h1 className="mb-4 text-2xl font-medium text-gray-900 title-font sm:text-3xl lg:font-bold dark:text-white">
+              {playlist?.name || playlist?.title}
+            </h1>
+            <p
+              dangerouslySetInnerHTML={{ __html: playlist?.description }}
+              className="mb-3 leading-relaxed dark:text-gray-400"
+            ></p>
+            <p className="mb-3 leading-relaxed dark:text-gray-400 ">
+              {playlist?.songs?.length} Songs
+            </p>
+            <div className="flex items-center justify-start gap-6 mt-2">
+              <ShareButton />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h1 className="mb-2 text-xl font-bold ">Songs</h1>
+        <div className="flex flex-col items-start w-full gap-3 mx-auto">
+          {playlist?.songs?.map((song: Song) => (
+            <SongList key={song.id} song={song} />
+          ))}
+        </div>
+      </section>
+      <section>
+        <div>
+          <h1 className="py-4 text-xl font-bold ">Featured Artists</h1>
+          <div className='w-full scroll-container scroll-hide"'>
+            <div className="flex items-center justify-between gap-2">
+              {uniqueArtists.map((artist) => (
+                <ArtistData key={artist.id} artist={artist} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Playlists;
