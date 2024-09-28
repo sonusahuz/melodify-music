@@ -78,14 +78,14 @@ const SongQueue = ({ params }: { params: { songId: string } }) => {
             <div className="w-56 lg:w-96">
               {/* Song Title */}
               <h1
-                className="text-lg font-semibold truncate md:text-2xl lg:text-3xl"
+                className="text-xl font-semibold truncate md:text-2xl lg:text-3xl"
                 dangerouslySetInnerHTML={{
                   __html: `${singleSong?.name || singleSong?.title}`,
                 }}
               ></h1>
 
               {/* Artists */}
-              <small className="block text-xs text-gray-600 truncate md:text-sm">
+              <small className="block text-xs text-gray-600 truncate md:text-sm mt-2">
                 {singleSong?.artists.primary
                   .map((artist) => artist.name)
                   .join(', ')}
@@ -93,7 +93,7 @@ const SongQueue = ({ params }: { params: { songId: string } }) => {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex items-center justify-center gap-4 mt-5">
+            <div className="flex items-center justify-center gap-4 mt-3">
               <AddFavorite song={singleSong} />
               <ArrowDownToLine
                 size={25}
