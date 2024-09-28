@@ -43,7 +43,7 @@ const Albums = ({ params }: { params: { albumId: string } }) => {
 
   return (
     <div className="mb-20">
-      <section className="flex items-center justify-center text-gray-600 body-font">
+      <section className=" text-gray-600 body-font">
         <div className="flex flex-col items-center justify-center py-5 mx-auto md:flex-row">
           <div className="w-64 mb-6 md:mb-0">
             <img
@@ -54,7 +54,7 @@ const Albums = ({ params }: { params: { albumId: string } }) => {
               src={album?.image?.[2]?.link || album?.image?.[2]?.url}
             />
           </div>
-          <div className="flex flex-col items-center text-center lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 md:items-start md:text-left">
+          <div className="flex flex-col w-54 lg:w-96 items-center text-center lg:flex-grow md:w-1/2 md:pl-16 md:items-start md:text-left">
             <h1 className="mb-4 text-2xl font-medium text-gray-900 title-font dark:text-white sm:text-3xl lg:font-bold">
               {album.name || album.title}
             </h1>

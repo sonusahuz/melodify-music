@@ -182,71 +182,84 @@ export const genre = [
     id: '1',
     link: 'hindi',
     title: 'Hindi',
+    color: 'bg-red-500', // Example color for Hindi
   },
   {
     id: '2',
     link: 'hindi,english',
     title: 'New Releases',
+    color: 'bg-blue-500', // Example color for New Releases
   },
   {
     id: '3',
     link: 'hindi,punjabi',
     title: 'Party',
+    color: 'bg-yellow-500', // Example color for Party
   },
   {
     id: '4',
     link: 'hindi,bhojpuri',
     title: 'Mood',
+    color: 'bg-purple-500', // Example color for Mood
   },
   {
     id: '6',
     link: 'english',
     title: 'English',
+    color: 'bg-green-500', // Example color for English
   },
   {
     id: '7',
     link: 'punjabi',
     title: 'Punjabi',
+    color: 'bg-pink-500', // Example color for Punjabi
   },
   {
     id: '8',
     link: 'bhojpuri',
     title: 'Bhojpuri',
+    color: 'bg-orange-500', // Example color for Bhojpuri
   },
   {
     id: '9',
     link: 'tamil',
     title: 'Tamil',
+    color: 'bg-indigo-500', // Example color for Tamil
   },
   {
     id: '10',
     link: 'telugu',
     title: 'Telugu',
+    color: 'bg-teal-500', // Example color for Telugu
   },
   {
     id: '11',
     link: 'marathi',
     title: 'Marathi',
+    color: 'bg-gray-500', // Example color for Marathi
   },
   {
     id: '12',
     link: 'gujarati',
     title: 'Gujarati',
+    color: 'bg-cyan-500', // Example color for Gujarati
   },
   {
     id: '13',
     link: 'bengali',
     title: 'Bengali',
+    color: 'bg-lime-500', // Example color for Bengali
   },
-
   {
     id: '14',
     link: 'haryanvi',
     title: 'Haryanvi',
+    color: 'bg-rose-500', // Example color for Haryanvi
   },
   {
     id: '15',
     link: 'rajasthani',
     title: 'Rajasthani',
+    color: 'bg-fuchsia-500', // Example color for Rajasthani
   },
 ];

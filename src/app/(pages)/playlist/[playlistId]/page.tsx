@@ -42,7 +42,7 @@ const Playlists = ({ params }: { params: { playlistId: string } }) => {
 
   return (
     <div className="mb-20">
-      <section className="flex items-center justify-center text-gray-600 body-font">
+      <section className="text-gray-600 body-font">
         <div className="flex flex-col items-center justify-center py-5 mx-auto md:flex-row">
           <div className="w-64 mb-6 md:mb-0">
             <img
@@ -53,7 +53,7 @@ const Playlists = ({ params }: { params: { playlistId: string } }) => {
               src={playlist?.image[2]?.link || playlist?.image[2]?.url}
             />
           </div>
-          <div className="flex flex-col items-center text-center lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 md:items-start md:text-left">
+          <div className="flex flex-col w-54 lg:w-96 items-center text-center lg:flex-grow md:w-1/2 md:pl-16 md:items-start md:text-left">
             <h1 className="mb-4 text-2xl font-medium text-gray-900 title-font sm:text-3xl lg:font-bold dark:text-white">
               {playlist?.name || playlist?.title}
             </h1>
@@ -81,7 +81,7 @@ const Playlists = ({ params }: { params: { playlistId: string } }) => {
       <section>
         <div>
           <h1 className="py-4 text-xl font-bold ">Featured Artists</h1>
-          <div className='w-full scroll-container scroll-hide"'>
+          <div className="w-full scroll-container scroll-hide">
             <div className="flex items-center justify-between gap-2">
               {uniqueArtists.map((artist) => (
                 <ArtistData key={artist.id} artist={artist} />

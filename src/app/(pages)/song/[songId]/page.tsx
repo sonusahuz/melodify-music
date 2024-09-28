@@ -60,54 +60,60 @@ const SongQueue = ({ params }: { params: { songId: string } }) => {
 
   return (
     <div className="mb-20 md:py-0">
-      <div>
-        <div className="flex items-center justify-center body-font">
-          <div className="flex flex-col items-center justify-center py-5 mx-auto md:flex-row">
-            <div className="w-64 mb-6 md:mb-0">
-              <img
-                src={singleSong?.image[2]?.url || singleSong?.image[2]?.link}
-                alt={singleSong?.title}
-                width={200}
-                height={200}
-                className="object-cover object-center rounded w-96"
-              />
+      <div className="body-font">
+        <div className="flex flex-col items-center py-5 mx-auto md:flex-row">
+          {/* Song Image */}
+          <div className="w-64 mb-6 md:mb-0">
+            <img
+              src={singleSong?.image[2]?.url || singleSong?.image[2]?.link}
+              alt={singleSong?.title}
+              width={200}
+              height={200}
+              className="object-cover object-center w-64 rounded md:w-96"
+            />
+          </div>
+
+          {/* Song Info */}
+          <div className="flex flex-col items-center text-center md:ml-10 lg:flex-grow md:w-1/2 md:pl-6 md:items-start md:text-left">
+            <div className="w-56 lg:w-96">
+              {/* Song Title */}
+              <h1
+                className="text-lg font-semibold truncate md:text-2xl lg:text-3xl"
+                dangerouslySetInnerHTML={{
+                  __html: `${singleSong?.name || singleSong?.title}`,
+                }}
+              ></h1>
+
+              {/* Artists */}
+              <small className="block text-xs text-gray-600 truncate md:text-sm">
+                {singleSong?.artists.primary
+                  .map((artist) => artist.name)
+                  .join(', ')}
+              </small>
             </div>
-            <div className="text-center md:text-left">
-              <div className="lg:mb-8 md:ml-6">
-                <div className="mx-auto truncate w-52">
-                  <h1
-                    className="text-2xl font-semibold truncate md:text-3xl"
-                    dangerouslySetInnerHTML={{
-                      __html: `${singleSong?.name || singleSong?.title}`,
-                    }}
-                  ></h1>
-                  <small className="text-xs">
-                    {singleSong?.artists.primary
-                      .map((artist) => artist.name)
-                      .join(', ')}
-                  </small>
-                </div>
-              </div>
-              <div className="flex items-center justify-center gap-4 mt-5">
-                <AddFavorite song={singleSong} />
-                <ArrowDownToLine
-                  size={25}
-                  strokeWidth={1.25}
-                  className="cursor-pointer"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleDownloadSong(singleSong);
-                  }}
-                />
-                <ShareButton />
-                <PlayPauseButton
-                  togglePlayPause={togglePlayPause}
-                  isPlaying={isPlaying}
-                />
-              </div>
+
+            {/* Action Buttons */}
+            <div className="flex items-center justify-center gap-4 mt-5">
+              <AddFavorite song={singleSong} />
+              <ArrowDownToLine
+                size={25}
+                strokeWidth={1.25}
+                className="cursor-pointer"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleDownloadSong(singleSong);
+                }}
+              />
+              <ShareButton />
+              <PlayPauseButton
+                togglePlayPause={togglePlayPause}
+                isPlaying={isPlaying}
+              />
             </div>
           </div>
         </div>
+
+        {/* Recommended Songs */}
         <div className="w-full mt-6 lg:mr-5">
           <div className="flex flex-wrap items-center justify-between">
             <h1 className="text-xl font-bold">Recommended Songs</h1>
@@ -118,10 +124,12 @@ const SongQueue = ({ params }: { params: { songId: string } }) => {
             ))}
           </div>
         </div>
+
+        {/* Featured Artists */}
         <div>
-          <h1 className="py-4 text-xl font-bold ">Featured Artists</h1>
-          <div className=" w-[340px] scroll-container scroll-hide">
-            <div className="flex items-center justify-between gap-3 text-center">
+          <h1 className="py-4 text-xl font-bold">Featured Artists</h1>
+          <div className="w-full overflow-x-auto scroll-container scroll-hide">
+            <div className="flex items-center justify-between gap-2">
               {singleSong.artists.primary.map((artist) => (
                 <ArtistData artist={artist} key={artist.id} />
               ))}
