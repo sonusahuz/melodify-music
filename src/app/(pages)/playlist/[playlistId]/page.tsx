@@ -53,7 +53,7 @@ const Playlists = ({ params }: { params: { playlistId: string } }) => {
               src={playlist?.image[2]?.link || playlist?.image[2]?.url}
             />
           </div>
-          <div className="flex flex-col w-54 lg:w-96 items-center text-center lg:flex-grow md:w-1/2 md:pl-16 md:items-start md:text-left">
+          <div className="flex flex-col items-center w-64 text-center lg:w-96 lg:flex-grow md:w-1/2 md:pl-16 md:items-start md:text-left">
             <h1 className="mb-4 text-2xl font-medium text-gray-900 title-font sm:text-3xl lg:font-bold dark:text-white">
               {playlist?.name || playlist?.title}
             </h1>

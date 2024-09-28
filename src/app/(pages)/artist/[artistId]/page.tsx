@@ -19,7 +19,7 @@ const ArtistPage = ({ params }: { params: { artistId: string } }) => {
 
   return (
     <div className="mb-20">
-      <section className=" text-gray-600 body-font">
+      <section className="text-gray-600 body-font">
         <div className="flex flex-col items-center justify-center gap-5 py-5 mx-auto md:flex-row lg:gap-10">
           <div>
             <img
@@ -30,7 +30,7 @@ const ArtistPage = ({ params }: { params: { artistId: string } }) => {
               src={artists?.image[2]?.link || artists?.image[2]?.url}
             />
           </div>
-          <div className="flex flex-col w-54 lg:w-96  items-center text-center lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 md:items-start md:text-left">
+          <div className="flex flex-col items-center text-center lg:w-96 lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 md:items-start md:text-left">
             <h1 className="py-4 text-3xl font-bold title-font sm:text-5xl dark:text-white lg:py-0">
               {artists?.name}
             </h1>
