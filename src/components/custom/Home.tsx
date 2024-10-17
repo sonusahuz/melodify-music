@@ -4,6 +4,7 @@ import { useMusicPlayer } from '@/components/custom/MusicContextProvider';
 import Link from 'next/link';
 import AritistCard from '@/app/(pages)/artist/AritistCard';
 import Spinner from './Loading';
+import Image from 'next/image';
 
 const NewRelease = () => {
   const { songs, isLoading } = useMusicPlayer();
@@ -21,7 +22,7 @@ const NewRelease = () => {
             className="w-[150px]"
             aria-label={`Go to ${song.name} ${type}`}
           >
-            <img
+            <Image
               className="rounded-lg"
               height={150}
               width={150}
