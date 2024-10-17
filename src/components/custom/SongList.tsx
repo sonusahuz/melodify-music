@@ -2,14 +2,15 @@
 import { ArrowDownToLine } from 'lucide-react';
 import AddFavorite from '../button/AddFavorite';
 import { useMusicPlayer } from './MusicContextProvider';
+import Image from 'next/image';
 
 const SongList = ({ song }: { song: Song }) => {
   const { getSong, handleDownloadSong } = useMusicPlayer();
   return (
-    <div key={song.id} className="w-full p-2 border rounded cursor-pointer">
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center justify-between gap-3 truncate sm:w-auto w-60 lg:w-96">
-          <img
+    <main key={song.id} className="w-full p-2 border rounded cursor-pointer">
+      <section className="flex flex-wrap items-center justify-between gap-2">
+        <div className="flex items-center justify-between gap-3 truncate sm:w-auto w-52 lg:w-96">
+          <Image
             onClick={() => getSong(song.id)}
             src={`${song?.image[2]?.url || song?.image[2]?.link}`}
             alt={song.title}
@@ -46,6 +47,7 @@ const SongList = ({ song }: { song: Song }) => {
           <AddFavorite song={song} />
           <ArrowDownToLine
             size={25}
+            strokeWidth={1.25}
             className="cursor-pointer"
             onClick={(e) => {
               e.stopPropagation();
@@ -53,8 +55,8 @@ const SongList = ({ song }: { song: Song }) => {
             }}
           />
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

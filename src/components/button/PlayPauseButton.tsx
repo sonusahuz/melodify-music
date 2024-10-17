@@ -16,7 +16,11 @@ const PlayPauseButton: React.FC<{
     getSong(`${songId}`);
   };
   return (
-    <Button onClick={handleClick} className="cursor-pointer h-8 rounded-full">
+    <Button
+      aria-label="Play"
+      onClick={handleClick}
+      className="cursor-pointer h-8 rounded-full"
+    >
       Play
     </Button>
   );

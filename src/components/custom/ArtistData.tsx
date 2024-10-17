@@ -1,30 +1,42 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-const ArtistData = ({ artist }: { artist: any }) => {
+const ArtistData: React.FC<{ artist: any }> = ({ artist }) => {
   return (
-    <div
+    <main
+      className="flex flex-col items-center justify-center gap-3 text-center truncate"
       key={artist.id}
-      className="flex items-center justify-between gap-3 text-center truncate"
     >
       <Link
         href={`/artist/${artist.id}`}
         className="flex flex-col items-center cursor-pointer"
       >
-        <div className="rounded-full overflow-hidden w-[150px] h-[150px] ">
-          <img
+        <figure className="rounded-full overflow-hidden w-[150px] h-[150px]">
+          <Image
             height={100}
             width={100}
             src={artist?.image?.[2]?.url || artist?.image?.[2]?.link}
             alt={artist.name}
             className="object-cover w-full h-full"
+            loading="lazy" // Improve performance by deferring offscreen images
           />
-        </div>
-        <h1 className="mt-2 text-xs font-normal">{artist.name}</h1>
-        <h1 className="mt-1 text-xs font-normal capitalize">{artist.type}</h1>
+        </figure>
+        <h2
+          className="mt-2 text-xs font-normal"
+          aria-label={`Artist name: ${artist.name}`}
+        >
+          {artist.name}
+        </h2>
+        <p
+          className="mt-1 text-xs font-normal capitalize"
+          aria-label={`Artist type: ${artist.type}`}
+        >
+          {artist.type}
+        </p>
       </Link>
-    </div>
+    </main>
   );
 };
 

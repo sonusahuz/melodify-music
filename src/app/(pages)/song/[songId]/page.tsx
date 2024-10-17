@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import AddFavorite from '@/components/button/AddFavorite';
 import PlayPauseButton from '@/components/button/PlayPauseButton';
@@ -11,6 +10,7 @@ import { useQuery } from '@tanstack/react-query';
 import { ArrowDownToLine } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import ArtistData from '@/components/custom/ArtistData';
+import Image from 'next/image';
 
 const SongQueue = ({ params }: { params: { songId: string } }) => {
   const { songId } = params;
@@ -58,35 +58,36 @@ const SongQueue = ({ params }: { params: { songId: string } }) => {
 
   if (!singleSong) return null;
 
+  const songImage =
+    singleSong?.image[2]?.url ||
+    singleSong?.image[2]?.link ||
+    '/default-image.jpg';
+
   return (
-    <div className="mb-20 md:py-0">
+    <main className="mb-20 md:py-0">
       <section className="body-font">
         <div className="flex flex-col items-center justify-center py-5 mx-auto md:flex-row">
-          <div className="w-64 mb-6 md:mb-0">
-            <img
-              src={singleSong?.image[2]?.url || singleSong?.image[2]?.link}
+          <figure className="w-64 mb-6 md:mb-0">
+            <Image
+              src={songImage}
               alt={singleSong?.title}
               width={200}
               height={200}
               className="object-cover object-center rounded w-96"
             />
-          </div>
+            <figcaption className="text-center text-sm mt-2">
+              {singleSong?.title}
+            </figcaption>
+          </figure>
           <div className="flex flex-col items-center w-64 text-center lg:w-96 lg:flex-grow md:w-1/2 md:pl-16 md:items-start md:text-left">
-            <h1
-              className="mb-4 text-2xl font-medium text-gray-900 title-font dark:text-white sm:text-3xl lg:font-bold"
-              dangerouslySetInnerHTML={{
-                __html: `${singleSong?.name || singleSong?.title}`,
-              }}
-            ></h1>
-            <p
-              dangerouslySetInnerHTML={{
-                __html: singleSong?.artists.primary
-                  .map((artist) => artist.name)
-                  .join(', '),
-              }}
-              className="mb-3 leading-relaxed dark:text-gray-400"
-            />
-
+            <h1 className="mb-4 text-2xl font-medium text-gray-900 title-font dark:text-white sm:text-3xl lg:font-bold">
+              {singleSong?.name || singleSong?.title}
+            </h1>
+            <p className="mb-3 leading-relaxed dark:text-gray-400">
+              {singleSong?.artists.primary
+                .map((artist) => artist.name)
+                .join(', ')}
+            </p>
             <div className="flex items-center justify-start gap-4 mt-2">
               <AddFavorite song={singleSong} />
               <ArrowDownToLine
@@ -108,21 +109,19 @@ const SongQueue = ({ params }: { params: { songId: string } }) => {
         </div>
       </section>
 
-      {/* Recommended Songs */}
-      <div className="w-full mt-6 lg:mr-5">
-        <div className="flex flex-wrap items-center justify-between">
-          <h1 className="text-xl font-bold">Recommended Songs</h1>
-        </div>
+      <section className="w-full mt-6 lg:mr-5">
+        <header className="flex flex-wrap items-center justify-between">
+          <h2 className="text-xl font-bold">Recommended Songs</h2>
+        </header>
         <div className="flex flex-col items-center gap-3 mt-2">
           {filteredSongQueue.map((song) => (
             <SongList key={song.id} song={song} />
           ))}
         </div>
-      </div>
+      </section>
 
-      {/* Featured Artists */}
-      <div>
-        <h1 className="py-4 text-xl font-bold">Featured Artists</h1>
+      <section>
+        <h2 className="py-4 text-xl font-bold">Featured Artists</h2>
         <div className="w-full overflow-x-auto scroll-container scroll-hide">
           <div className="flex items-center justify-between gap-2">
             {singleSong.artists.primary.map((artist) => (
@@ -130,8 +129,8 @@ const SongQueue = ({ params }: { params: { songId: string } }) => {
             ))}
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

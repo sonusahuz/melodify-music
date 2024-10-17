@@ -6,7 +6,6 @@ import toast from 'react-hot-toast';
 
 const AddFavorite: React.FC<{ song: Song }> = ({ song }) => {
   const { favorites, addFavorite, removeFavorite } = useMusicPlayer();
-
   const isFavorite = favorites.some((favorite) => favorite.id === song.id);
 
   const toggleFavorite = () => {
@@ -20,21 +19,32 @@ const AddFavorite: React.FC<{ song: Song }> = ({ song }) => {
   };
 
   return (
-    <div onClick={toggleFavorite}>
+    <button
+      type="button"
+      onClick={toggleFavorite}
+      aria-label={isFavorite ? 'Remove from Liked Songs' : 'Add to Liked Songs'}
+      className="flex items-center p-2"
+      role="switch" // Indicating it's a toggle action
+      aria-checked={isFavorite} // Indicates the current state
+    >
       {isFavorite ? (
         <AiFillHeart
           title="Remove from Liked Songs"
-          className="cursor-pointer text-red-700"
+          className="text-red-700"
           size={25}
+          aria-hidden="true"
         />
       ) : (
         <AiOutlineHeart
           title="Add to Liked Songs"
-          className="cursor-pointer"
           size={25}
+          aria-hidden="true"
         />
       )}
-    </div>
+      <span className="sr-only">
+        {isFavorite ? 'Remove from Liked Songs' : 'Add to Liked Songs'}
+      </span>
+    </button>
   );
 };
 

@@ -8,14 +8,22 @@ const Slider = ({ children }: SliderProps) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <div className="flex items-center justify-center gap-2">
+    <section
+      className="flex items-center justify-center gap-2"
+      aria-label="Image slider"
+    >
       <div
         className="grid items-center justify-between w-full grid-flow-col-dense grid-rows-2 gap-4 overflow-x-scroll scroll-container scroll-hide"
         ref={scrollRef}
+        role="region"
+        aria-labelledby="slider-title"
       >
+        <h2 id="slider-title" className="sr-only">
+          Slider Content
+        </h2>
         {children}
       </div>
-    </div>
+    </section>
   );
 };
 

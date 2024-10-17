@@ -1,12 +1,13 @@
 import { Loader2 } from 'lucide-react';
 import React from 'react';
 
-const Spinner = () => {
+const Loading = () => {
   return (
-    <div className="flex items-center justify-center h-[90vh]">
-      <Loader2 className="mr-2 h-8 w-8 animate-spin dark:text-white text-black" />
-    </div>
+    <main className="flex items-center justify-center h-[90vh]">
+      <Loader2 className="mr-2 h-8 w-8 animate-spin" aria-label="Loading..." />
+      <span className="sr-only">Loading...</span>
+    </main>
   );
 };
 
-export default Spinner;
+export default Loading;

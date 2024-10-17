@@ -1,35 +1,38 @@
 import Link from 'next/link';
 import React from 'react';
 import { artists } from '@/lib/data';
+import Image from 'next/image';
 
 const AritistCard = () => {
   return (
-    <div className="mb-5">
+    <section className="mb-5">
       <h1 className="my-3 text-xl font-bold">Popular Artists</h1>
       <div className="w-full scroll-container scroll-hide">
-        <div className="flex items-center justify-between gap-3 text-center ">
+        <div className="flex items-center justify-between gap-3 text-center">
           {artists.map((artist) => (
-            <Link
-              href={`/artist/${artist.id}`}
+            <article
               key={artist.id}
               className="flex flex-col items-center cursor-pointer"
             >
-              <div className="rounded-full overflow-hidden w-[150px] h-[150px]">
-                <img
-                  height={100}
-                  width={100}
-                  src={artist.image}
-                  alt={artist.name}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <h1 className="mt-2 text-xs font-normal">{artist.name}</h1>
-              <h1 className="mt-1 text-xs font-normal">{artist.type}</h1>
-            </Link>
+              <Link href={`/artist/${artist.id}`}>
+                <div className="rounded-full overflow-hidden w-[150px] h-[150px]">
+                  <Image
+                    height={100}
+                    width={100}
+                    src={artist.image}
+                    alt={artist.name}
+                    loading="lazy"
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+                <h2 className="mt-2 text-xs font-normal">{artist.name}</h2>
+                <h3 className="mt-1 text-xs font-normal">{artist.type}</h3>
+              </Link>
+            </article>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

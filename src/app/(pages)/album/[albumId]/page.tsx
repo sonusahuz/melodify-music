@@ -1,4 +1,4 @@
-'use client'; // Ensures this is treated as a client-side component
+'use client';
 
 import { getAlbumDetail } from '@/lib/api';
 import { useQuery } from '@tanstack/react-query';
@@ -7,29 +7,30 @@ import Spinner from '@/components/custom/Loading';
 import SongList from '@/components/custom/SongList';
 import { ShareButton } from '@/components/button/ShareButton';
 import ArtistData from '@/components/custom/ArtistData';
-
-interface Album {
-  id: string;
-  name?: string;
-  title?: string;
-  image: { url: string; link: string }[];
-  description?: string;
-  songs?: Song[];
-  artists?: {
-    all: Artist[];
-  };
-}
+import Image from 'next/image';
 
 interface Artist {
   id: string;
   name: string;
   type: string;
-  image: { url: string }[];
+  image: Image[];
   url: string;
   role: string;
 }
 
-const Albums = ({ params }: { params: { albumId: string } }) => {
+interface Album {
+  id: string;
+  name?: string;
+  title?: string;
+  image: Image[];
+  description?: string;
+  songs?: Song[]; // Assuming Song is defined elsewhere
+  artists?: {
+    all: Artist[];
+  };
+}
+
+const Albums: React.FC<{ params: { albumId: string } }> = ({ params }) => {
   const { albumId } = params;
 
   const { data: album, isLoading } = useQuery<Album>({
@@ -38,25 +39,33 @@ const Albums = ({ params }: { params: { albumId: string } }) => {
   });
 
   if (isLoading) return <Spinner />;
+  if (!album) return <p>No album found.</p>;
 
-  if (!album) return <div>No album found.</div>;
+  const albumImage =
+    album.image?.[2]?.link || album.image?.[2]?.url || '/default-album.jpg';
+  const albumTitle = album.name || album.title;
 
   return (
-    <div className="mb-20">
-      <section className="text-gray-600  body-font">
+    <main className="mb-20">
+      {/* Album Info Section */}
+      <section className="text-gray-600 body-font">
         <div className="flex flex-col items-center justify-center py-5 mx-auto md:flex-row">
-          <div className="w-64 mb-6 md:mb-0">
-            <img
+          {/* Album Image */}
+          <figure className="w-64 mb-6 md:mb-0">
+            <Image
               height={200}
               width={200}
+              loading="lazy"
               className="object-cover object-center rounded w-96"
-              alt={`${album.name || album.title}`}
-              src={album?.image?.[2]?.link || album?.image?.[2]?.url}
+              alt={albumTitle || 'Album cover'}
+              src={albumImage}
             />
-          </div>
+          </figure>
+
+          {/* Album Details */}
           <div className="flex flex-col items-center w-64 text-center lg:w-96 lg:flex-grow md:w-1/2 md:pl-16 md:items-start md:text-left">
             <h1 className="mb-4 text-2xl font-medium text-gray-900 title-font dark:text-white sm:text-3xl lg:font-bold">
-              {album.name || album.title}
+              {albumTitle}
             </h1>
             {album.description && (
               <p
@@ -65,7 +74,7 @@ const Albums = ({ params }: { params: { albumId: string } }) => {
               />
             )}
             <p className="mb-3 leading-relaxed dark:text-gray-400">
-              {album?.songs?.length || 0} Songs
+              {album.songs?.length || 0} Songs
             </p>
             <div className="flex items-center justify-start gap-6 mt-2">
               <ShareButton />
@@ -74,25 +83,28 @@ const Albums = ({ params }: { params: { albumId: string } }) => {
         </div>
       </section>
 
-      <div>
-        <h1 className="mb-4 text-xl font-bold ">Songs</h1>
+      {/* Songs List */}
+      <section>
+        <h2 className="mb-4 text-xl font-bold">Songs</h2>
         <div className="flex flex-col items-start w-full gap-3 mx-auto">
-          {album?.songs?.map((song: Song) => (
+          {album.songs?.map((song) => (
             <SongList key={song.id} song={song} />
-          ))}
+          )) || <p>No songs available.</p>}
         </div>
-      </div>
-      <div>
-        <h1 className="py-4 text-xl font-bold ">Featured Artists</h1>
+      </section>
+
+      {/* Featured Artists */}
+      <section>
+        <h2 className="py-4 text-xl font-bold">Featured Artists</h2>
         <div className="w-full scroll-container scroll-hide">
           <div className="flex items-center justify-between gap-3 text-center">
-            {album?.artists?.all?.map((artist) => (
+            {album.artists?.all?.map((artist) => (
               <ArtistData key={artist.id} artist={artist} />
-            ))}
+            )) || <p>No artists available.</p>}
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

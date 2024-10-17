@@ -41,7 +41,7 @@ export function ShareButton() {
         <Share2
           strokeWidth={1.25}
           size={22}
-          className="text-black cursor-pointer dark:text-white dark:text-white"
+          className="text-black cursor-pointer dark:text-white"
         />
       </AlertDialogTrigger>
       <AlertDialogContent>
@@ -115,7 +115,10 @@ export function ShareButton() {
                     )
                   }
                 >
-                  <FaLinkedin size={50} className="text-black cursor-pointer dark:text-white" />
+                  <FaLinkedin
+                    size={50}
+                    className="text-black cursor-pointer dark:text-white"
+                  />
                 </li>
               </ul>
               <div className="mt-4">

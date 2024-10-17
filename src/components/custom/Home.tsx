@@ -9,15 +9,17 @@ const NewRelease = () => {
   const { songs, isLoading } = useMusicPlayer();
 
   if (isLoading) return <Spinner />;
+
   const SongList = ({ title, songs, type }: any) => (
-    <div className="mb-5">
-      <h1 className="my-3 text-xl font-bold">{title}</h1>
+    <section className="mb-5">
+      <h2 className="my-3 text-xl font-bold">{title}</h2>
       <div className="flex gap-3 overflow-x-auto scroll-container">
         {songs?.map((song: any) => (
           <Link
             href={`/${type}/${song.id}`}
             key={song.id}
             className="w-[150px]"
+            aria-label={`Go to ${song.name} ${type}`}
           >
             <img
               className="rounded-lg"
@@ -32,18 +34,17 @@ const NewRelease = () => {
           </Link>
         ))}
       </div>
-    </div>
+    </section>
   );
 
   return (
-    <div className="mb-20">
+    <main className="mb-20">
       <AritistCard />
       <SongList
         title="Trending Albums"
         songs={songs?.trending.albums}
         type="album"
       />
-
       <SongList
         title="Top Playlists"
         songs={songs?.playlists}
@@ -51,7 +52,7 @@ const NewRelease = () => {
       />
       <SongList title="Top Albums" songs={songs?.albums} type="album" />
       <SongList title="Top Charts" songs={songs?.charts} type="playlist" />
-    </div>
+    </main>
   );
 };
 
