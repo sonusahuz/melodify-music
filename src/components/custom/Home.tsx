@@ -5,6 +5,7 @@ import Link from 'next/link';
 import AritistCard from '@/app/(pages)/artist/AritistCard';
 import Spinner from './Loading';
 import Image from 'next/image';
+import Footer from './Footer';
 
 const NewRelease = () => {
   const { songs, isLoading } = useMusicPlayer();
@@ -14,7 +15,7 @@ const NewRelease = () => {
   const SongList = ({ title, songs, type }: any) => (
     <section className="mb-5">
       <h2 className="my-3 text-xl font-bold">{title}</h2>
-      <div className="flex gap-3 overflow-x-auto scroll-container">
+      <div className="flex gap-3 lg:gap-6 overflow-x-auto scroll-container">
         {songs?.map((song: any) => (
           <Link
             href={`/${type}/${song.id}`}
@@ -53,6 +54,9 @@ const NewRelease = () => {
       />
       <SongList title="Top Albums" songs={songs?.albums} type="album" />
       <SongList title="Top Charts" songs={songs?.charts} type="playlist" />
+      <div>
+        <Footer />
+      </div>
     </main>
   );
 };

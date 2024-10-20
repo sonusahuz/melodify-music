@@ -8,7 +8,7 @@ const AritistCard = () => {
     <section className="mb-5">
       <h1 className="my-3 text-xl font-bold">Popular Artists</h1>
       <div className="w-full scroll-container scroll-hide">
-        <div className="flex items-center justify-between gap-3 text-center">
+        <div className="flex items-center justify-between gap-3 lg:gap-6 text-center">
           {artists.map((artist) => (
             <article
               key={artist.id}

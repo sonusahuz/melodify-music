@@ -41,7 +41,7 @@ const SearchSongs = () => {
           <header>
             <h1 className="mt-6 mb-4 text-xl font-bold">Trending Artists</h1>
           </header>
-          <div className="flex flex-wrap items-center justify-start gap-3 my-3 scroll-container scroll-hide">
+          <div className="flex flex-wrap items-center justify-start gap-3 lg:gap-6 my-3 scroll-container scroll-hide">
             {artists.slice(10).map((artist) => (
               <Link
                 href={`/artist/${artist.id}`}
@@ -69,7 +69,7 @@ const SearchSongs = () => {
           <header className="mx-auto">
             <h1 className="mt-6 mb-4 text-xl font-bold">New Releases</h1>
           </header>
-          <div className="flex items-center justify-center gap-4 scroll-container">
+          <div className="flex items-center justify-center gap-3 lg:gap-6 scroll-container">
             {songs?.trending?.albums?.map((song) => (
               <AlbumCard key={song.id} song={song} />
             ))}

@@ -114,7 +114,7 @@ export const MusicPlayerProvider = ({ children }: { children: ReactNode }) => {
       const songUrl = URL.createObjectURL(data);
       const a = document.createElement('a');
       a.href = songUrl;
-      a.download = `${song?.title || song?.name}.mp3`;
+      a.download = `${song?.title || song?.name}`;
       a.click();
       URL.revokeObjectURL(songUrl);
       toast.dismiss();

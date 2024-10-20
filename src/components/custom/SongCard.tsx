@@ -16,7 +16,7 @@ const SongCard = ({
     <main className="mb-20">
       <section className="mx-auto">
         <h1 className="mt-6 mb-3 text-xl font-bold ">Top Playlists</h1>
-        <div className="flex items-center justify-center gap-4 scroll-container">
+        <div className="flex items-center justify-center gap-3 lg:gap-6 scroll-container">
           {songs?.playlists?.map((song) => (
             <PlaylistCard key={song.id} song={song} />
           ))}
@@ -24,7 +24,7 @@ const SongCard = ({
       </section>
       <section className="mx-auto">
         <h1 className="mt-6 mb-3 text-xl font-bold ">Top Albums</h1>
-        <div className="flex items-center justify-center gap-4 scroll-container">
+        <div className="flex items-center justify-center gap-3 lg:gap-6 scroll-container">
           {songs?.albums?.map((song) => (
             <AlbumCard key={song.id} song={song} />
           ))}
@@ -32,7 +32,7 @@ const SongCard = ({
       </section>
       <section className="mx-auto">
         <h1 className="mt-6 mb-3 text-xl font-bold ">Top Charts</h1>
-        <div className="flex items-center justify-center gap-4 scroll-container">
+        <div className="flex items-center justify-center gap-3 lg:gap-6 scroll-container">
           {songs?.charts?.map((song) => (
             <PlaylistCard key={song.id} song={song} />
           ))}

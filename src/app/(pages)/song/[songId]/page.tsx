@@ -123,7 +123,7 @@ const SongQueue = ({ params }: { params: { songId: string } }) => {
       <section>
         <h2 className="py-4 text-xl font-bold">Featured Artists</h2>
         <div className="w-full overflow-x-auto scroll-container scroll-hide">
-          <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center justify-between gap-3 lg:gap-6">
             {singleSong.artists.primary.map((artist) => (
               <ArtistData artist={artist} key={artist.id} />
             ))}

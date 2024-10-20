@@ -97,7 +97,7 @@ const Albums: React.FC<{ params: { albumId: string } }> = ({ params }) => {
       <section>
         <h2 className="py-4 text-xl font-bold">Featured Artists</h2>
         <div className="w-full scroll-container scroll-hide">
-          <div className="flex items-center justify-between gap-3 text-center">
+          <div className="flex items-center justify-between gap-3 lg:gap-6 text-center">
             {album.artists?.all?.map((artist) => (
               <ArtistData key={artist.id} artist={artist} />
             )) || <p>No artists available.</p>}

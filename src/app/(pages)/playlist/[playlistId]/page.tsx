@@ -83,7 +83,7 @@ const Playlists = ({ params }: { params: { playlistId: string } }) => {
       <section>
         <h2 className="py-4 text-xl font-bold">Featured Artists</h2>
         <div className="w-full scroll-container scroll-hide">
-          <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center justify-between gap-3 lg:gap-6">
             {uniqueArtists.map((artist) => (
               <ArtistData key={artist.id} artist={artist} />
             ))}

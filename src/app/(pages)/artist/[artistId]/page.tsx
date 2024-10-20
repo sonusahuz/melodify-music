@@ -92,7 +92,7 @@ const ArtistPage: React.FC<{ params: { artistId: string } }> = ({ params }) => {
         {/* Top Albums Section */}
         <div>
           <h2 className="mt-6 mb-4 text-xl font-bold">Top Albums</h2>
-          <div className="flex items-center justify-center gap-3 scroll-container">
+          <div className="flex items-center justify-center gap-3 lg:gap-6 scroll-container">
             {artist.topAlbums?.map((album) => (
               <AlbumCard key={album.id} song={album} />
             )) || <p>No albums available.</p>}
