@@ -32,7 +32,10 @@ const SearchSongs = () => {
                 className="cursor-pointer"
                 key={genre.id}
               >
-                <Badge variant="outline" className="dark:text-white dark:bg-black bg-gray-300 text-black">
+                <Badge
+                  variant="outline"
+                  className="dark:text-white dark:bg-black bg-gray-300 text-black"
+                >
                   {genre.title}
                 </Badge>
               </Link>
@@ -48,7 +51,7 @@ const SearchSongs = () => {
                 className="cursor-pointer"
                 key={artist.id}
               >
-                <div className="rounded-full overflow-hidden w-[150px] h-[150px]">
+                <div className="rounded-full overflow-hidden w-[150px] lg:h-[170px] h-[150px] lg:w-[170px]">
                   <Image
                     height={100}
                     width={100}

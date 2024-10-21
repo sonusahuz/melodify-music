@@ -13,7 +13,7 @@ const ArtistData: React.FC<{ artist: any }> = ({ artist }) => {
         href={`/artist/${artist.id}`}
         className="flex flex-col items-center cursor-pointer"
       >
-        <figure className="rounded-full overflow-hidden w-[150px] h-[150px]">
+        <figure className="rounded-full overflow-hidden lg:w-[170px] w-[150px]">
           <Image
             height={100}
             width={100}

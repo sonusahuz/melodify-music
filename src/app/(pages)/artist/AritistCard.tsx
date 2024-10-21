@@ -15,7 +15,7 @@ const AritistCard = () => {
               className="flex flex-col items-center cursor-pointer"
             >
               <Link href={`/artist/${artist.id}`}>
-                <div className="rounded-full overflow-hidden w-[150px] h-[150px]">
+                <div className="rounded-full overflow-hidden lg:w-[170px] w-[150px] lg:h-[170px] h-[150px]">
                   <Image
                     height={100}
                     width={100}

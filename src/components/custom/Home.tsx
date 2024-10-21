@@ -20,13 +20,13 @@ const NewRelease = () => {
           <Link
             href={`/${type}/${song.id}`}
             key={song.id}
-            className="w-[150px]"
+            className="lg:w-[170px] w-[150px]"
             aria-label={`Go to ${song.name} ${type}`}
           >
             <Image
               className="rounded-lg"
-              height={150}
-              width={150}
+              height={170}
+              width={170}
               src={song.image[2]?.link || song.image[2]?.url}
               alt={song.name}
             />

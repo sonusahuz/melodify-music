@@ -13,16 +13,16 @@ const PlaylistCard: React.FC<PlaylistCardProps> = ({ song }) => {
   return (
     <Link
       href={`/playlist/${song.id}`}
-      className="w-[150px]"
+      className="lg:w-[170px] w-[150px]"
       aria-label={`View playlist ${song.name || song.title}`}
     >
       <figure>
         <Image
           className="rounded-lg"
-          height={150}
+          height={170}
+          width={170}
           src={imageUrl}
           alt={song.title || song.name || 'Playlist cover'}
-          width={150}
         />
         <figcaption className="pt-2">
           <h3 className="text-sm truncate">{song.name || song.title}</h3>

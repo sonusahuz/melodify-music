@@ -15,13 +15,13 @@ const AlbumCard: React.FC<AlbumCardProps> = ({ song }) => {
     <Link
       href={`/album/${song.id}`}
       aria-label={`View album: ${albumTitle}`}
-      className="w-[150px]"
+      className="lg:w-[170px] w-[150px]"
     >
       <figure className="w-full">
         <Image
           className="rounded-lg"
-          height={150}
-          width={150}
+          height={170}
+          width={170}
           loading="lazy" // Lazy load the image for performance
           src={albumImage}
           alt={albumTitle}
