@@ -7,7 +7,6 @@ import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import SongList from '@/components/custom/SongList';
 import { artists, genre } from '@/lib/data';
-import Image from 'next/image';
 import AlbumCard from '../album/AlbumCard';
 import PlaylistCard from '../playlist/PlaylistCard';
 
@@ -47,7 +46,7 @@ const SearchSongs = () => {
                 key={artist.id}
               >
                 <div className="rounded-full overflow-hidden w-[150px] lg:h-[170px] h-[150px] lg:w-[170px]">
-                  <Image
+                  <img
                     height={100}
                     width={100}
                     src={artist.image}
@@ -90,7 +89,7 @@ const SearchSongs = () => {
                     <Link href={`/artist/${item.id}`}>
                       <div className="flex flex-wrap items-center justify-start gap-4">
                         <div>
-                          <Image
+                          <img
                             height={100}
                             width={100}
                             src={item.image[2]?.url}
@@ -118,7 +117,7 @@ const SearchSongs = () => {
                       className="flex items-center justify-start gap-5 p-2 cursor-pointer"
                     >
                       <div className="rounded-md overflow-hidden w-[150px] h-auto lg:w-[130px] lg:h-[130px]">
-                        <Image
+                        <img
                           height={100}
                           width={100}
                           src={item.image[2].link || item.image[2].url}
@@ -144,7 +143,7 @@ const SearchSongs = () => {
                       href={`/playlist/${item.id}`}
                       className="rounded-lg w-36"
                     >
-                      <Image
+                      <img
                         className="rounded"
                         height={150}
                         src={item.image[2]?.link || item.image[2]?.url}

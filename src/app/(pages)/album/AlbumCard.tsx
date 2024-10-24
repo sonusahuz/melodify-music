@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
@@ -18,11 +17,10 @@ const AlbumCard: React.FC<AlbumCardProps> = ({ song }) => {
       className="lg:w-[170px] w-[150px]"
     >
       <figure className="w-full">
-        <Image
+        <img
           className="rounded-lg"
           height={170}
           width={170}
-          loading="lazy" // Lazy load the image for performance
           src={albumImage}
           alt={albumTitle}
         />

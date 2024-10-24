@@ -2,7 +2,6 @@
 import { getAlbumDetail } from '@/lib/api';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import Image from 'next/image';
 import ArtistData from '../../artist/ArtistData';
 import Loading from '@/components/custom/Loading';
 import { ShareButton } from '@/components/button/ShareButton';
@@ -51,10 +50,9 @@ const Albums = ({ params }: { params: { albumId: string } }) => {
         <div className="flex flex-col items-center justify-center py-5 mx-auto md:flex-row">
           {/* Album Image */}
           <figure className="w-64 mb-6 md:mb-0">
-            <Image
+            <img
               height={200}
               width={200}
-              loading="lazy"
               className="object-cover object-center rounded w-96"
               alt={albumTitle || 'Album cover'}
               src={albumImage}

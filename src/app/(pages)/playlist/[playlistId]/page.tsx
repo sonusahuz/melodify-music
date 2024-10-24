@@ -2,7 +2,6 @@
 import { getPlaylistDetail } from '@/lib/api';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import Image from 'next/image';
 import Loading from '@/components/custom/Loading';
 import { ShareButton } from '@/components/button/ShareButton';
 import SongList from '@/components/custom/SongList';
@@ -45,7 +44,7 @@ const Playlists = ({ params }: { params: { playlistId: string } }) => {
       <section className="text-gray-600 body-font">
         <div className="flex flex-col items-center justify-center py-5 mx-auto md:flex-row">
           <figure className="w-64 mb-6 md:mb-0">
-            <Image
+            <img
               height={200}
               width={200}
               className="object-cover rounded w-[450px]"

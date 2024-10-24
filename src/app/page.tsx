@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useMusicPlayer } from '@/providers/MusicContextProvider';
 import Loading from '@/components/custom/Loading';
 import AritistCard from './(pages)/artist/AritistCard';
@@ -23,7 +22,7 @@ const Home = () => {
             className="lg:w-[170px] w-[150px]"
             aria-label={`Go to ${song.name} ${type}`}
           >
-            <Image
+            <img
               className="rounded-lg"
               height={170}
               width={170}

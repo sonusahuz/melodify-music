@@ -1,6 +1,5 @@
 'use client';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useMusicPlayer } from '@/providers/MusicContextProvider';
 import SongControls from './SongControls';
 
@@ -17,11 +16,10 @@ const SongPlayer: React.FC = () => {
             href={`/song/${song.id}`}
             className="flex items-center justify-start gap-2 cursor-pointer"
           >
-            <Image
+            <img
               src={song.image[2].url || song.image[2].link}
               alt={song.title}
               width={45}
-              loading="lazy"
               height={45}
               className="rounded"
             />

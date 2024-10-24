@@ -3,7 +3,6 @@ import { getArtists } from '@/lib/api';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { formatNumber } from '@/lib/utils';
-import Image from 'next/image';
 import AlbumCard from '../../album/AlbumCard';
 import Loading from '@/components/custom/Loading';
 import SongList from '@/components/custom/SongList';
@@ -45,12 +44,11 @@ const ArtistPage = ({ params }: { params: { artistId: string } }) => {
         <div className="flex flex-col items-center justify-center gap-5 py-5 mx-auto md:flex-row lg:gap-10">
           {/* Artist Image */}
           <figure>
-            <Image
+            <img
               className="object-cover object-center mx-auto rounded-full"
               alt={`Image of ${artist.name}`}
               height={250}
               width={250}
-              loading="lazy"
               src={artistImage}
             />
           </figure>

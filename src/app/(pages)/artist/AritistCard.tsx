@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
 import { artists } from '@/lib/data';
-import Image from 'next/image';
 
 const AritistCard = () => {
   return (
@@ -16,12 +15,11 @@ const AritistCard = () => {
             >
               <Link href={`/artist/${artist.id}`}>
                 <div className="rounded-full overflow-hidden lg:w-[170px] w-[150px] lg:h-[170px] h-[150px]">
-                  <Image
+                  <img
                     height={100}
                     width={100}
                     src={artist.image}
                     alt={artist.name}
-                    loading="lazy"
                     className="object-cover w-full h-full"
                   />
                 </div>

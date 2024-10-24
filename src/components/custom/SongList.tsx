@@ -1,7 +1,6 @@
 'use client';
 import { useMusicPlayer } from '@/providers/MusicContextProvider';
 import { ArrowDownToLine } from 'lucide-react';
-import Image from 'next/image';
 import AddToFavoriteButton from '../button/AddToFavoriteButton';
 
 const SongList = ({ song }: { song: Song }) => {
@@ -10,7 +9,7 @@ const SongList = ({ song }: { song: Song }) => {
     <main key={song.id} className="w-full p-2 border rounded cursor-pointer">
       <section className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center justify-between gap-3 truncate sm:w-auto w-52 lg:w-96">
-          <Image
+          <img
             onClick={() => getSong(song.id)}
             src={`${song?.image[2]?.url || song?.image[2]?.link}`}
             alt={song.title}

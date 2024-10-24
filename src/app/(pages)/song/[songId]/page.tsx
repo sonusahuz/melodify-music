@@ -9,7 +9,6 @@ import { BASE_URL, getPlayingSong } from '@/lib/api';
 import { useQuery } from '@tanstack/react-query';
 import { ArrowDownToLine } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 import ArtistData from '../../artist/ArtistData';
 
 const SongQueue = ({ params }: { params: { songId: string } }) => {
@@ -68,7 +67,7 @@ const SongQueue = ({ params }: { params: { songId: string } }) => {
       <section className="body-font">
         <div className="flex flex-col items-center justify-center py-5 mx-auto md:flex-row">
           <figure className="w-64 mb-6 md:mb-0">
-            <Image
+            <img
               src={songImage}
               alt={singleSong?.title}
               width={200}

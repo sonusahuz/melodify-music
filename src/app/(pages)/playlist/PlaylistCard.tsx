@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
@@ -17,7 +16,7 @@ const PlaylistCard: React.FC<PlaylistCardProps> = ({ song }) => {
       aria-label={`View playlist ${song.name || song.title}`}
     >
       <figure>
-        <Image
+        <img
           className="rounded-lg"
           height={170}
           width={170}
