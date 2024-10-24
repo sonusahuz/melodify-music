@@ -10,7 +10,7 @@ const Footer = () => {
   const { songs } = useMusicPlayer();
   return (
     <footer className="mx-auto max-w-screen-2xl">
-      <div className="mb-16 grid grid-cols-2 gap-12 pt-6 md:grid-cols-4 lg:grid-cols-6 lg:gap-8 lg:pt-12">
+      <div className="mb-10 grid grid-cols-2 gap-12 pt-6 md:grid-cols-4 lg:grid-cols-6 lg:gap-8 lg:pt-12">
         <div className="col-span-full lg:col-span-2">
           <Link href={'/'} className="flex mb-4 gap-2 items-center">
             <PiMusicNoteSimpleFill size={25} name="website-logo" />
@@ -24,10 +24,10 @@ const Footer = () => {
 
           <div className="flex gap-4">
             <Link href={'https://linkedin.com/in/sonusahu'}>
-              <FaLinkedin size={26} />
+              <FaLinkedin size={30} />
             </Link>
             <Link href={'https://x.com/in/sonusahuz'}>
-              <FaSquareXTwitter size={26} />
+              <FaSquareXTwitter size={30} />
             </Link>
           </div>
         </div>
@@ -113,7 +113,7 @@ const Footer = () => {
           </nav>
         </div>
       </div>
-      <div className="py-8 flex items-center justify-between flex-wrap text-center gap-4">
+      <div className="border-t py-6 flex items-center lg:justify-between justify-center flex-wrap text-center gap-4">
         <p className="text-center text-sm text-gray-400">
           Designed & Developed by{' '}
           <a

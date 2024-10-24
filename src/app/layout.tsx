@@ -10,7 +10,7 @@ import SongProvider from '@/providers/SongProvider';
 
 const inter = Poppins({
   subsets: ['latin'],
-  weight: ['100', '200', '300'],
+  weight: ['100', '200', '300' , "400"],
 });
 
 export const metadata: Metadata = {
