@@ -42,7 +42,7 @@ const Home = () => {
     <main className="mb-20">
       <AritistCard />
       <SongList
-        title="Trending Albums"
+        title="Top Albums"
         songs={songs?.trending.albums}
         type="album"
       />
@@ -51,7 +51,6 @@ const Home = () => {
         songs={songs?.playlists}
         type="playlist"
       />
-      <SongList title="Top Albums" songs={songs?.albums} type="album" />
       <SongList title="Top Charts" songs={songs?.charts} type="playlist" />
       <Footer />
     </main>

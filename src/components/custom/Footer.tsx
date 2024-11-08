@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { FaLinkedin, FaSquareXTwitter } from 'react-icons/fa6';
+import { FaLinkedin, FaSquareXTwitter, FaSquareGithub } from 'react-icons/fa6';
 import React from 'react';
 import { PiMusicNoteSimpleFill } from 'react-icons/pi';
 import { useMusicPlayer } from '@/providers/MusicContextProvider';
@@ -28,6 +28,9 @@ const Footer = () => {
             </Link>
             <Link href={'https://x.com/in/sonusahuz'}>
               <FaSquareXTwitter size={30} />
+            </Link>
+            <Link href={'https://github.com/sonusahuz/melodify-music'}>
+              <FaSquareGithub size={30} />
             </Link>
           </div>
         </div>

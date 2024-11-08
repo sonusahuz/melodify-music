@@ -1,11 +1,34 @@
-'use client';
 import { getPlaylistDetail } from '@/lib/api';
-import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import Loading from '@/components/custom/Loading';
 import { ShareButton } from '@/components/button/ShareButton';
 import SongList from '@/components/custom/SongList';
 import ArtistData from '../../artist/ArtistData';
+import { Metadata } from 'next';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { playlistId: string };
+}): Promise<Metadata> {
+  const album = await getPlaylistDetail(params.playlistId);
+
+  return {
+    title: `Melodify - ${album.name}`,
+    description: `Explore ${album.name}'s music, albums, and top tracks`,
+    openGraph: {
+      title: album.name,
+      description: `Discover ${album.name}'s music on our platform`,
+      images: [
+        {
+          url:
+            album.image[2]?.link ||
+            album.image[2]?.url ||
+            '/default-artist.jpg',
+        },
+      ],
+    },
+  };
+}
 
 interface Artist {
   id: string;
@@ -27,17 +50,12 @@ const removeDuplicateArtists = (artists: Artist[]): Artist[] => {
   });
 };
 
-const Playlists = ({ params }: { params: { playlistId: string } }) => {
+const Playlists = async ({ params }: { params: { playlistId: string } }) => {
   const { playlistId } = params;
 
-  const { data: playlist, isLoading } = useQuery({
-    queryKey: ['playlists', playlistId],
-    queryFn: () => getPlaylistDetail(playlistId),
-  });
+  const playlist = await getPlaylistDetail(playlistId);
 
   const uniqueArtists = removeDuplicateArtists(playlist?.artists || []);
-
-  if (isLoading) return <Loading />;
 
   return (
     <main className="mb-20">

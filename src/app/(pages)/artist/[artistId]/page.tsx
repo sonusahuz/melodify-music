@@ -1,12 +1,35 @@
-'use client';
 import { getArtists } from '@/lib/api';
-import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { formatNumber } from '@/lib/utils';
 import AlbumCard from '../../album/AlbumCard';
-import Loading from '@/components/custom/Loading';
 import SongList from '@/components/custom/SongList';
 import { ShareButton } from '@/components/button/ShareButton';
+import { Metadata } from 'next';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { artistId: string };
+}): Promise<Metadata> {
+  const artist = await getArtists(params.artistId);
+
+  return {
+    title: `Melodify - ${artist.name}`,
+    description: `Explore ${artist.name}'s music, albums, and top tracks`,
+    openGraph: {
+      title: artist.name,
+      description: `Discover ${artist.name}'s music on our platform`,
+      images: [
+        {
+          url:
+            artist.image[2]?.link ||
+            artist.image[2]?.url ||
+            '/default-artist.jpg',
+        },
+      ],
+    },
+  };
+}
 
 interface Image {
   link?: string;
@@ -24,15 +47,11 @@ interface Artist {
   topAlbums: Albums[]; // Assuming Albums is defined elsewhere
 }
 
-const ArtistPage = ({ params }: { params: { artistId: string } }) => {
+const ArtistPage = async ({ params }: { params: { artistId: string } }) => {
   const { artistId } = params;
 
-  const { data: artist, isLoading } = useQuery<Artist>({
-    queryKey: ['artists', artistId],
-    queryFn: () => getArtists(artistId),
-  });
+  const artist: Artist = await getArtists(artistId);
 
-  if (isLoading) return <Loading />;
   if (!artist) return <p>No artist found.</p>;
 
   const artistImage =
