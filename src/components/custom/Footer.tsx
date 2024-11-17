@@ -26,7 +26,7 @@ const Footer = () => {
             <Link href={'https://linkedin.com/in/sonusahu'}>
               <FaLinkedin size={30} />
             </Link>
-            <Link href={'https://x.com/in/sonusahuz'}>
+            <Link href={'https://x.com/sonusahuz'}>
               <FaSquareXTwitter size={30} />
             </Link>
             <Link href={'https://github.com/sonusahuz/melodify-music'}>
