@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 // URLs
 const HOME_DATA =
   'https://jiosaavan-harsh-patel.vercel.app/modules?language=hindi';
-export const BASE_URL = 'https://jio-saavn-five.vercel.app/api';
+export const BASE_URL = 'https://saavn.dev/api';
 
 // Home data
 export const homeData = async () => {

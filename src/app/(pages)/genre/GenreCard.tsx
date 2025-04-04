@@ -25,7 +25,7 @@ const GenreCard = ({
       <section className="mx-auto">
         <h1 className="mt-6 mb-3 text-xl font-bold ">Top Albums</h1>
         <div className="flex items-center justify-center gap-3 lg:gap-6 scroll-container">
-          {songs?.albums?.map((song) => (
+          {songs?.trending.albums?.map((song) => (
             <AlbumCard key={song.id} song={song} />
           ))}
         </div>

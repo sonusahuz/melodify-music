@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useMusicPlayer } from '@/providers/MusicContextProvider';
 import Loading from '@/components/custom/Loading';
 import AritistCard from './(pages)/artist/AritistCard';
@@ -23,7 +22,7 @@ const Home = () => {
             className="lg:w-[170px] w-[150px]"
             aria-label={`Go to ${song.name} ${type}`}
           >
-            <Image
+            <img
               className="rounded-lg"
               height={170}
               width={170}
@@ -43,7 +42,7 @@ const Home = () => {
     <main className="mb-20">
       <AritistCard />
       <SongList
-        title="Trending Albums"
+        title="Top Albums"
         songs={songs?.trending.albums}
         type="album"
       />
@@ -52,7 +51,6 @@ const Home = () => {
         songs={songs?.playlists}
         type="playlist"
       />
-      <SongList title="Top Albums" songs={songs?.albums} type="album" />
       <SongList title="Top Charts" songs={songs?.charts} type="playlist" />
       <Footer />
     </main>

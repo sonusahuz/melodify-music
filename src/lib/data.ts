@@ -7,6 +7,13 @@ export const artists = [
       'https://c.saavncdn.com/artists/Arijit_Singh_002_20230323062147_500x500.jpg',
   },
   {
+    id: '14087974',
+    name: 'Shubh',
+    type: 'Artist',
+    image:
+      'https://c.saavncdn.com/artists/Shubh_000_20220921112507_500x500.jpg',
+  },
+  {
     id: '3319750',
     name: 'Sidhu Moose Wala',
     type: 'Artist',
