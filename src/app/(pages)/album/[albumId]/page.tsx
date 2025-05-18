@@ -3,7 +3,6 @@ import React from 'react';
 import ArtistData from '../../artist/ArtistData';
 import { ShareButton } from '@/components/button/ShareButton';
 import SongList from '@/components/custom/SongList';
-import { Metadata } from 'next';
 
 interface Artist {
   id: string;
@@ -23,31 +22,6 @@ interface Album {
   songs?: Song[]; // Assuming Song is defined elsewhere
   artists?: {
     all: Artist[];
-  };
-}
-
-export async function generateMetadata({
-  params,
-}: {
-  params: { albumId: string };
-}): Promise<Metadata> {
-  const album = await getAlbumDetail(params.albumId);
-
-  return {
-    title: `Melodify - ${album.name}`,
-    description: `Explore ${album.name}'s music, albums, and top tracks`,
-    openGraph: {
-      title: album.name,
-      description: `Discover ${album.name}'s music on our platform`,
-      images: [
-        {
-          url:
-            album.image[2]?.link ||
-            album.image[2]?.url ||
-            '/default-artist.jpg',
-        },
-      ],
-    },
   };
 }
 
