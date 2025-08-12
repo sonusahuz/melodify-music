@@ -3,32 +3,6 @@ import React from 'react';
 import { ShareButton } from '@/components/button/ShareButton';
 import SongList from '@/components/custom/SongList';
 import ArtistData from '../../artist/ArtistData';
-import { Metadata } from 'next';
-
-export async function generateMetadata({
-  params,
-}: {
-  params: { playlistId: string };
-}): Promise<Metadata> {
-  const album = await getPlaylistDetail(params.playlistId);
-
-  return {
-    title: `Melodify - ${album.name}`,
-    description: `Explore ${album.name}'s music, albums, and top tracks`,
-    openGraph: {
-      title: album.name,
-      description: `Discover ${album.name}'s music on our platform`,
-      images: [
-        {
-          url:
-            album.image[2]?.link ||
-            album.image[2]?.url ||
-            '/default-artist.jpg',
-        },
-      ],
-    },
-  };
-}
 
 interface Artist {
   id: string;
@@ -38,6 +12,13 @@ interface Artist {
   type: string;
   url: string;
 }
+
+// FIXED TYPE
+type PageProps = {
+  params: Promise<{
+    playlistId: string;
+  }>;
+};
 
 const removeDuplicateArtists = (artists: Artist[]): Artist[] => {
   const seen = new Set<string>();
@@ -50,8 +31,8 @@ const removeDuplicateArtists = (artists: Artist[]): Artist[] => {
   });
 };
 
-const Playlists = async ({ params }: { params: { playlistId: string } }) => {
-  const { playlistId } = params;
+const Playlists = async ({ params }: Awaited<PageProps>) => {
+  const { playlistId } = await params;
 
   const playlist = await getPlaylistDetail(playlistId);
 

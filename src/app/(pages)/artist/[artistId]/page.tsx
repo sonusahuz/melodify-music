@@ -4,32 +4,6 @@ import { formatNumber } from '@/lib/utils';
 import AlbumCard from '../../album/AlbumCard';
 import SongList from '@/components/custom/SongList';
 import { ShareButton } from '@/components/button/ShareButton';
-import { Metadata } from 'next';
-
-export async function generateMetadata({
-  params,
-}: {
-  params: { artistId: string };
-}): Promise<Metadata> {
-  const artist = await getArtists(params.artistId);
-
-  return {
-    title: `Melodify - ${artist.name}`,
-    description: `Explore ${artist.name}'s music, albums, and top tracks`,
-    openGraph: {
-      title: artist.name,
-      description: `Discover ${artist.name}'s music on our platform`,
-      images: [
-        {
-          url:
-            artist.image[2]?.link ||
-            artist.image[2]?.url ||
-            '/default-artist.jpg',
-        },
-      ],
-    },
-  };
-}
 
 interface Image {
   link?: string;
@@ -47,8 +21,14 @@ interface Artist {
   topAlbums: Albums[]; // Assuming Albums is defined elsewhere
 }
 
-const ArtistPage = async ({ params }: { params: { artistId: string } }) => {
-  const { artistId } = params;
+type PageProps = {
+  params: Promise<{
+    artistId: string;
+  }>;
+};
+
+const ArtistPage = async ({ params }: Awaited<PageProps>) => {
+  const { artistId } = await params;
 
   const artist: Artist = await getArtists(artistId);
 

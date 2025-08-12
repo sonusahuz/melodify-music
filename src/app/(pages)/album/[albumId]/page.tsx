@@ -19,14 +19,21 @@ interface Album {
   title?: string;
   image: Image[];
   description?: string;
-  songs?: Song[]; // Assuming Song is defined elsewhere
+  songs?: Song[];
   artists?: {
     all: Artist[];
   };
 }
 
-const Albums = async ({ params }: { params: { albumId: string } }) => {
-  const { albumId } = params;
+// FIXED TYPE
+type PageProps = {
+  params: Promise<{
+    albumId: string;
+  }>;
+};
+
+export default async function Albums({ params }: Awaited<PageProps>) {
+  const { albumId } = await params; // ✅ await the params if it's a Promise
 
   const album: Album = await getAlbumDetail(albumId);
 
@@ -96,6 +103,4 @@ const Albums = async ({ params }: { params: { albumId: string } }) => {
       </section>
     </main>
   );
-};
-
-export default Albums;
+}
